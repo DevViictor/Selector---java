@@ -1,6 +1,9 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.JOptionPane; //mostra erro caso o login e senha estejam errados
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,15 +12,16 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Login{
+public class Login extends JFrame{
     public static void main(String[] args) {
 
+       
         // Configuração da Janela :
 
         //Cria a jenala :
 
 
-        JFrame window = new JFrame("Selector");
+        JFrame window = new JFrame("Selector.login");
 
         window.setBounds(600,120,800,600);
 
@@ -38,22 +42,21 @@ public class Login{
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.orange); // cor do retângulo
-        panel.setBounds(0, 0, 350, 800); // posição e tamanho
+        panel.setBounds(0, 0, 400, 800); // posição e tamanho
 
-        
         //Conteudos a janela :
 
         //texto a tela : 
 
         JLabel texto1 = new JLabel("Bem vindo");
-        texto1.setBounds(500,100,150,40);
+        texto1.setBounds(50,100,150,40);
         texto1.setFont(new Font("Serif", Font.BOLD, 25));
         texto1.setForeground(Color.white);
 
 
 
 
-        JLabel user = new  JLabel ("Usario");
+        JLabel user = new  JLabel ("Usuario");
         user.setBounds(450,200,150,40);
         user.setFont(new Font("Serif", Font.BOLD, 15));
         user.setForeground(Color.white);
@@ -81,9 +84,34 @@ public class Login{
         login.setFont(new Font("Serif", Font.BOLD, 20));
         login.setForeground(Color.white);
 
+        //botão para acessar as janelas
+        login.addActionListener( e -> { //ação do botão de login
+            String usuario = campousuario.getText(); //pega oq o usuario digitar
+            String senha = new String(camposenha.getPassword()); //pega oq o usuario digitar na senha
+
+            if (usuario.equals("admin") && senha.equals("1234")) {
+                window.dispose(); // Fecha a tela de login
+                Adm.telaADM();    // Abre a tela do administrador ERRO PQ TA NA MAIN
+            } else if (UsuarioDB.verificarLogin(usuario, senha)) { //vai verificars e na classe UsuarioDB ja tem algum criado
+                window.dispose(); // Fecha a tela de login
+                Funcionario.Funcionario(); // Abre a tela do funcionário, ERRO PQ TA NA MAINS
+            } else {
+            JOptionPane.showMessageDialog(window, "Usuário ou senha inválidos!");
+            }
+
+
+        });
+
+
+
+
         //Adicionando imagem :
 
+        ImageIcon foto = new ImageIcon("logo.png");
+        Image imagem = foto.getImage().getScaledInstance(350, 800, Image.SCALE_SMOOTH);
 
+        JLabel labelimage = new JLabel(new ImageIcon(imagem));
+        labelimage.setBounds(0, 0, 350, 400);
 
         //adicionar algo a janela
         window.add(user);
@@ -92,14 +120,23 @@ public class Login{
         window.add(camposenha);
         window.add(login);
         window.add(texto1);
+        window.add(labelimage);
         window.add(panel);
+        
+        
+       
+        
        
 
-         //Torna a janela visivel
-         window.setVisible(true);
+        
 
-        
-        
+
+
+
+
+
+        //Torna a janela visivel
+        window.setVisible(true);
     
 
     }

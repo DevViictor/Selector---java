@@ -1,9 +1,11 @@
-import java.awt.Color;
+//import java.awt.Color;
 
-import javax.swing.JFrame;
+import java.awt.*;
+import javax.swing.*;
 
-public class Funcionario {
-        public static void main(String[] args) {
+public class Funcionario extends JFrame {
+        
+       /*public static void main(String[] args)*/ public static void funcionario() {
         
         JFrame window2 = new JFrame("home");
 
@@ -23,6 +25,5 @@ public class Funcionario {
 
 
         window2.setVisible(true);
-        }
-        
+        } 
 }
