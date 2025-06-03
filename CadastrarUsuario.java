@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,7 +10,10 @@ import javax.swing.JTextField;
 
 
 public class CadastrarUsuario  extends JFrame{
-    /*public static void main(String[] args)*/public static void telaCadastro() {
+    /*public static void main(String[] args)*/ /**
+     * 
+     */
+    public static void telaCadastro() {
         
     
         JFrame window4 = new JFrame("Adm.page");
@@ -92,23 +96,6 @@ public class CadastrarUsuario  extends JFrame{
         registrarf.setFont(new Font("Serif", Font.BOLD, 20));
         registrarf.setForeground(Color.white);
 
-        registrarf.addActionListener(e ->{
-            String UsuarioLogin = campo_usuario.getText(); //armazena oq foi digitado
-            String UsuarioSenha = campo_senha2.getText();//armazena oq foi digitado
-            
-            if (!UsuarioLogin.isEmpty() && !UsuarioSenha.isEmpty()) { //verifica se as variaveis estão vazias
-            UsuarioDB.adicionarFuncionario(UsuarioLogin, UsuarioSenha); //armazena as informações
-            JOptionPane.showMessageDialog(window4, "Funcionário cadastrado com sucesso!"); //se as variaveis tiverem um valor, o usuario sera cadastrado
-            window4.dispose(); // fecha a janela de cadastro
-            }else {
-            JOptionPane.showMessageDialog(window4, "Preencha todos os campos."); //caso nenhum dos campos seja preenchido
-    }
-
-        });
-
-        
-        
-
         //Menu:
 
 
@@ -126,16 +113,29 @@ public class CadastrarUsuario  extends JFrame{
         cadastrof.setBackground(Color.white);
         cadastrof.setFont(new Font("Serif", Font.BOLD, 20));
         cadastrof.setForeground(Color.black);
+        
+        
+        JButton sair = new JButton("Sair");
+        sair.setBounds(50,280,150,30);
+        sair.setBackground(Color.white);
+        sair.setFont(new Font("Serif", Font.BOLD, 20));
+        sair.setForeground(Color.black);
+
+        sair.addActionListener( e -> {
+            
+           Login.main(null);
+            
+        });
 
        
-    
-
-       
        
 
 
 
-        // Adicionar conteudo       
+        // Adicionar conteudo
+
+        window4.add(campo_ra);
+        window4.add(sair);
         window4.add(cadastrof);
         window4.add(cadastro);
         window4.add(menu2);
@@ -156,5 +156,9 @@ public class CadastrarUsuario  extends JFrame{
         
 
     }
+ 
     
+
+
+
 }

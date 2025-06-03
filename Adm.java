@@ -8,10 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Adm  extends JFrame{
-    /*public static void main(String[] args)*/ public static void telaADM() {
+
+     public  static void telaADM() {
         
     
-        JFrame window3 = new JFrame("Adm.page");
+        JFrame window3 = new JFrame("Selector.Adm");
 
         window3.setBounds(600,120,800,600);
 
@@ -118,18 +119,27 @@ public class Adm  extends JFrame{
         cadastrof.setForeground(Color.black);
 
         cadastrof.addActionListener( e -> {
-            CadastrarUsuario.telaCadastro;
+            //cadastrof.dispose();
+            CadastrarUsuario.telaCadastro();
+        });
+
+        JButton sair = new JButton("Sair");
+        sair.setBounds(50,280,150,30);
+        sair.setBackground(Color.white);
+        sair.setFont(new Font("Serif", Font.BOLD, 20));
+        sair.setForeground(Color.black);
+
+        sair.addActionListener( e -> {
+            
+           Login.main(null);
             
         });
+
     
-
-       
-       
-
 
 
         // Adicionar conteudo       
-
+        window3.add(sair);
         window3.add(cadastrof);
         window3.add(cadastro);
         window3.add(menu);
@@ -149,7 +159,5 @@ public class Adm  extends JFrame{
         
         window3.setVisible(true);
         
-
     }
-    
 }

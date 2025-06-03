@@ -2,7 +2,6 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-
 import javax.swing.JOptionPane; //mostra erro caso o login e senha estejam errados
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -49,7 +48,7 @@ public class Login extends JFrame{
         //texto a tela : 
 
         JLabel texto1 = new JLabel("Bem vindo");
-        texto1.setBounds(50,100,150,40);
+        texto1.setBounds(520,100,150,40);
         texto1.setFont(new Font("Serif", Font.BOLD, 25));
         texto1.setForeground(Color.white);
 
@@ -92,9 +91,9 @@ public class Login extends JFrame{
             if (usuario.equals("admin") && senha.equals("1234")) {
                 window.dispose(); // Fecha a tela de login
                 Adm.telaADM();    // Abre a tela do administrador ERRO PQ TA NA MAIN
-            } else if (UsuarioDB.verificarLogin(usuario, senha)) { //vai verificars e na classe UsuarioDB ja tem algum criado
+            } else if (UsuarioDB.checarUsuario(usuario, senha)) { //vai verificars e na classe UsuarioDB ja tem algum criado
                 window.dispose(); // Fecha a tela de login
-                Funcionario.Funcionario(); // Abre a tela do funcionário, ERRO PQ TA NA MAINS
+                Funcionario.funcionario(); // Abre a tela do funcionário, ERRO PQ TA NA MAINS
             } else {
             JOptionPane.showMessageDialog(window, "Usuário ou senha inválidos!");
             }
@@ -114,6 +113,7 @@ public class Login extends JFrame{
         labelimage.setBounds(0, 0, 350, 400);
 
         //adicionar algo a janela
+
         window.add(user);
         window.add(password);
         window.add(campousuario);
