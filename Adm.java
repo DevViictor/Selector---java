@@ -49,13 +49,13 @@ public  static void telaADM() {
         produtotext.setForeground(Color.white);
 
         //texto codigo
-        JLabel numtext = new JLabel("Código do Produto :");
+        JLabel numtext = new JLabel("Código do Produto:");
         numtext.setBounds(540,130,300,24);
         numtext.setFont(new Font("Serif", Font.BOLD, 17));
         numtext.setForeground(Color.white);
 
         //texto tipo
-        JLabel tipotext = new JLabel("Quantidade do Produto :");
+        JLabel tipotext = new JLabel("Tela do Produto:");
         tipotext.setBounds(270,220,300,20);
         tipotext.setFont(new Font("Serif", Font.BOLD, 17));
         tipotext.setForeground(Color.white);

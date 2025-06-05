@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -48,7 +47,7 @@ public class Login extends JFrame{
         //texto a tela : 
 
         JLabel texto1 = new JLabel("Bem vindo");
-        texto1.setBounds(520,100,150,40);
+        texto1.setBounds(530,80,150,40);
         texto1.setFont(new Font("Serif", Font.BOLD, 25));
         texto1.setForeground(Color.white);
 
@@ -56,13 +55,13 @@ public class Login extends JFrame{
 
 
         JLabel user = new  JLabel ("Usuario");
-        user.setBounds(450,200,150,40);
+        user.setBounds(470,200,150,40);
         user.setFont(new Font("Serif", Font.BOLD, 15));
         user.setForeground(Color.white);
 
 
         JLabel password = new JLabel ("Senha");
-        password.setBounds(450,300,150,30);
+        password.setBounds(470,300,150,30);
         password.setFont(new Font("Serif", Font.BOLD, 15));
         password.setForeground(Color.white);
 
@@ -70,15 +69,15 @@ public class Login extends JFrame{
         //campo de digitação 
 
         JTextField campousuario = new JTextField();
-        campousuario.setBounds(450,230,250,20);
+        campousuario.setBounds(470,230,250,20);
 
         JPasswordField camposenha = new JPasswordField();
-        camposenha.setBounds(450,330,250,20);
+        camposenha.setBounds(470,330,250,20);
 
         //botão 
 
         JButton login = new JButton("Login");
-        login.setBounds(530,400,100,30);
+        login.setBounds(550,400,100,30);
         login.setBackground(Color.orange);
         login.setFont(new Font("Serif", Font.BOLD, 20));
         login.setForeground(Color.white);
@@ -138,9 +137,5 @@ public class Login extends JFrame{
     }
 }
     
-    
-
-
-
 
 
