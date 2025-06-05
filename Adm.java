@@ -1,25 +1,21 @@
 import java.awt.Color;
 import java.awt.Font;
-
+ import java.util.ArrayList; //biblioteca pra usar lista
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Adm  extends JFrame{
-
-     public  static void telaADM() {
-        
+   
+public  static void telaADM() {
     
+        //configurações da janela
         JFrame window3 = new JFrame("Selector.Adm");
-
         window3.setBounds(600,120,800,600);
-
         window3.getContentPane().setBackground(Color.black);
-
-        
-
         window3.setLayout(null);
 
 
@@ -59,17 +55,17 @@ public class Adm  extends JFrame{
         numtext.setForeground(Color.white);
 
         //texto tipo
-        JLabel tipotext = new JLabel("Tipo do Produto :");
+        JLabel tipotext = new JLabel("Quantidade do Produto :");
         tipotext.setBounds(270,220,300,20);
         tipotext.setFont(new Font("Serif", Font.BOLD, 17));
         tipotext.setForeground(Color.white);
 
         // visto texto
 
-        JLabel vistotext = new JLabel("Visto :");
-        vistotext.setBounds(540,220,300,24);
-        vistotext.setFont(new Font("Serif", Font.BOLD, 17));
-        vistotext.setForeground(Color.white);
+        JLabel valortext = new JLabel("Valor :");
+        valortext.setBounds(540,220,300,24);
+        valortext.setFont(new Font("Serif", Font.BOLD, 17));
+        valortext.setForeground(Color.white);
         
 
         //menu texto :
@@ -90,39 +86,57 @@ public class Adm  extends JFrame{
         JTextField num_produto = new JTextField();
         num_produto.setBounds(580,170,150,25);
 
-        JTextField tipo_produto = new JTextField();
-        tipo_produto.setBounds(300,260,150,25);
-
-        JTextField campo_visto = new JTextField();
-        campo_visto.setBounds(580,260,150,25);
-
+        JTextField qtd_produto = new JTextField();
+        qtd_produto.setBounds(300,260,150,25);
+        JTextField campo_valor = new JTextField();
+        campo_valor.setBounds(580,260,150,25);
 
 
-        //botão registrar produto
+
+        //botão registrar produto e sua ação
         JButton registrar = new JButton("Registrar");
         registrar.setBounds(410,350,200,30);
         registrar.setBackground(Color.orange);
         registrar.setFont(new Font("Serif", Font.BOLD, 20));
         registrar.setForeground(Color.white);
+        
+        registrar.addActionListener(e ->{
+           String nome = campo_produto.getText();
+           String valorStr = campo_valor.getText();
+           String estoqueStr = num_produto.getText();
+           String qtdStr = qtd_produto.getText();
 
-        //botão registrar Produto
-        JButton cadastro = new JButton("Produto");
-        cadastro.setBounds(50,160,150,30);
-        cadastro.setBackground(Color.white);
-        cadastro.setFont(new Font("Serif", Font.BOLD, 20));
-        cadastro.setForeground(Color.black);
+            if (nome.isEmpty() || valorStr.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                return;}
+        try { //trata o codigo em caso de erro
+            double valor = Double.parseDouble(valorStr);
+            int estoque = Integer.parseInt(estoqueStr);
+            int qtd = Integer.parseInt(qtdStr);
 
-        JButton cadastrof = new JButton("Funcionario");
-        cadastrof.setBounds(50,220,150,30);
-        cadastrof.setBackground(Color.white);
-        cadastrof.setFont(new Font("Serif", Font.BOLD, 20));
-        cadastrof.setForeground(Color.black);
+            Produto p1 = new Produto();
 
-        cadastrof.addActionListener( e -> {
-            //cadastrof.dispose();
-            CadastrarUsuario.telaCadastro();
-        });
+            p1.setNome(nome);
+            p1.setValor(valor);
+            p1.setEstoque(estoque);
+            p1.setQtd(qtd);
 
+            ProdutoDB.adicionarProduto(p1);
+
+            JOptionPane.showMessageDialog(null, "Produto regitrado!");
+        } catch (NumberFormatException ex) { //exibe a mensagem de erro
+
+
+            JOptionPane.showMessageDialog(null, "Valor ou estoque invalido!");
+
+        }
+        campo_produto.setText("");
+        campo_valor.setText("");
+        num_produto.setText("");
+        qtd_produto.setText("");
+        
+    });
+        //botão de sair mais sua acão
         JButton sair = new JButton("Sair");
         sair.setBounds(50,280,150,30);
         sair.setBackground(Color.white);
@@ -130,24 +144,23 @@ public class Adm  extends JFrame{
         sair.setForeground(Color.black);
 
         sair.addActionListener( e -> {
-            
-           Login.main(null);
+         window3.dispose();
+         Login.main(null);
+           
             
         });
 
     
 
 
-        // Adicionar conteudo       
+        // Adicionar conteudo  na janela
         window3.add(sair);
-        window3.add(cadastrof);
-        window3.add(cadastro);
         window3.add(menu);
         window3.add(registrar);
-        window3.add(vistotext);
-        window3.add(campo_visto);
+        window3.add(valortext);
+        window3.add(campo_valor);
         window3.add(tipotext);
-        window3.add(tipo_produto);
+        window3.add(qtd_produto);
         window3.add(num_produto);
         window3.add(numtext);
         window3.add(produtotext);

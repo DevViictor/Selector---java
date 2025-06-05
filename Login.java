@@ -91,12 +91,16 @@ public class Login extends JFrame{
             if (usuario.equals("admin") && senha.equals("1234")) {
                 window.dispose(); // Fecha a tela de login
                 Adm.telaADM();    // Abre a tela do administrador ERRO PQ TA NA MAIN
-            } else if (UsuarioDB.checarUsuario(usuario, senha)) { //vai verificars e na classe UsuarioDB ja tem algum criado
-                window.dispose(); // Fecha a tela de login
-                Funcionario.funcionario(); // Abre a tela do funcionário, ERRO PQ TA NA MAINS
-            } else {
-            JOptionPane.showMessageDialog(window, "Usuário ou senha inválidos!");
             }
+            else if (usuario.equals("marcola") && senha.equals("1234")){
+                window.dispose();
+                Funcionario.telaExibirprodutos();
+            }
+        
+            else {
+                        JOptionPane.showMessageDialog(window, "Usuário ou senha inválidos!");
+                      }
+                
 
 
         });
@@ -113,7 +117,7 @@ public class Login extends JFrame{
         labelimage.setBounds(0, 0, 350, 400);
 
         //adicionar algo a janela
-
+        window.add(labelimage);
         window.add(user);
         window.add(password);
         window.add(campousuario);
@@ -125,14 +129,6 @@ public class Login extends JFrame{
         
         
        
-        
-       
-
-        
-
-
-
-
 
 
         //Torna a janela visivel
