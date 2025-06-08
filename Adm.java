@@ -55,7 +55,7 @@ public  static void telaADM() {
         numtext.setForeground(Color.white);
 
         //texto tipo
-        JLabel tipotext = new JLabel("Tela do Produto:");
+        JLabel tipotext = new JLabel("Quantidade do Produto:");
         tipotext.setBounds(270,220,300,20);
         tipotext.setFont(new Font("Serif", Font.BOLD, 17));
         tipotext.setForeground(Color.white);
@@ -136,6 +136,19 @@ public  static void telaADM() {
         qtd_produto.setText("");
         
     });
+
+        JButton Estoque = new JButton("Estoque");
+        Estoque.setBounds(50, 220, 150, 30);
+        Estoque.setBackground(Color.white);
+        Estoque.setFont(new Font("Serif", Font.BOLD, 18));
+        Estoque.setForeground(Color.black);
+        Estoque.addActionListener(e -> {
+            window3.dispose();
+            ListaProdutos.telaLista();
+        });
+        
+
+
         //botão de sair mais sua acão
         JButton sair = new JButton("Sair");
         sair.setBounds(50,280,150,30);
@@ -154,6 +167,8 @@ public  static void telaADM() {
 
 
         // Adicionar conteudo  na janela
+       
+        window3.add(Estoque);
         window3.add(sair);
         window3.add(menu);
         window3.add(registrar);

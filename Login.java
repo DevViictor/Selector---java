@@ -93,7 +93,7 @@ public class Login extends JFrame{
             }
             else if (usuario.equals("marcola") && senha.equals("1234")){
                 window.dispose();
-                Funcionario.telaExibirprodutos();
+                ListaProdutos.telaLista();
             }
         
             else {

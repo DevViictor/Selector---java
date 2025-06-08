@@ -38,7 +38,7 @@ public double getValor() {
     return valor;
 
 }
-public Integer setQtd(){
+public Integer getQtd(){
     return qtd;
 }
 public int getEstoque() {
