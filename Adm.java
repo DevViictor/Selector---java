@@ -1,6 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
- import java.util.ArrayList; //biblioteca pra usar lista
+import java.util.ArrayList; //biblioteca pra usar lista
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,12 +8,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Adm  extends JFrame{
+public class Adm{
    
 public  static void telaADM() {
     
         //configurações da janela
-        JFrame window3 = new JFrame("Selector.Adm");
+        JFrame window3 = new JFrame("Registro");
         window3.setBounds(600,120,800,600);
         window3.getContentPane().setBackground(Color.black);
         window3.setLayout(null);

@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Login extends JFrame{
+public class Login{
     public static void main(String[] args) {
 
        
@@ -19,7 +19,7 @@ public class Login extends JFrame{
         //Cria a jenala :
 
 
-        JFrame window = new JFrame("Selector.login");
+        JFrame window = new JFrame("Login");
 
         window.setBounds(600,120,800,600);
 
@@ -54,7 +54,7 @@ public class Login extends JFrame{
 
 
 
-        JLabel user = new  JLabel ("Usuario");
+        JLabel user = new  JLabel ("Usuário");
         user.setBounds(470,200,150,40);
         user.setFont(new Font("Serif", Font.BOLD, 15));
         user.setForeground(Color.white);

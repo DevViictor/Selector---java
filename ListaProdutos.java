@@ -2,20 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ListaProdutos extends JFrame {
+public class ListaProdutos{
 
-    // Modelo global para armazenar transferências
     static DefaultListModel<String> listaTransferidos = new DefaultListModel<>();
 
     public static void telaLista() {
-        JFrame window = new JFrame("Selector.Lista");
+        JFrame window = new JFrame("Lista");
         window.setBounds(600, 120, 800, 600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
         window.setLayout(null);
         window.setResizable(false);
 
-        // Painel lateral
         JPanel panel = new JPanel();
         panel.setBackground(Color.orange);
         panel.setBounds(0, 0, 250, 600);
@@ -27,7 +25,6 @@ public class ListaProdutos extends JFrame {
         menu.setForeground(Color.white);
         panel.add(menu);
 
-        // Botões na lateral
         JButton sair = new JButton("Sair");
         sair.setBounds(50, 340, 150, 30);
         sair.setBackground(Color.white);
@@ -55,15 +52,12 @@ public class ListaProdutos extends JFrame {
             window.dispose();
             Adm.telaADM();
         });
-        
 
-        // Título principal
         JLabel titulo = new JLabel("Lista de Produtos");
         titulo.setBounds(410, 30, 400, 30);
         titulo.setFont(new Font("Serif", Font.BOLD, 25));
         titulo.setForeground(Color.white);
 
-        // Monta lista de produtos
         DefaultListModel<String> model = new DefaultListModel<>();
         for (Produto p : ProdutoDB.getProdutos()) {
             model.addElement(p.toString());
@@ -79,7 +73,6 @@ public class ListaProdutos extends JFrame {
         JScrollPane scroll = new JScrollPane(lista);
         scroll.setBounds(270, 100, 480, 280);
 
-        // Botão remover
         JButton remover = new JButton("Remover Produto");
         remover.setBounds(270, 400, 220, 30);
         remover.setBackground(Color.orange);
@@ -96,8 +89,6 @@ public class ListaProdutos extends JFrame {
             }
         });
 
-        
-        // Quantidade para transferir
         JLabel qtdLabel = new JLabel("Qtd a transferir:");
         qtdLabel.setBounds(270, 450, 150, 30);
         qtdLabel.setForeground(Color.WHITE);
@@ -106,7 +97,6 @@ public class ListaProdutos extends JFrame {
         JTextField campoQtd = new JTextField();
         campoQtd.setBounds(410, 450, 100, 30);
 
-        // Destino para transferência
         JLabel destinoLabel = new JLabel("Destino:");
         destinoLabel.setBounds(270, 490, 100, 30);
         destinoLabel.setForeground(Color.WHITE);
@@ -115,8 +105,7 @@ public class ListaProdutos extends JFrame {
         JTextField campoDestino = new JTextField();
         campoDestino.setBounds(400, 490, 270, 30);
 
-        // Botão transferir
-        JButton transferir = new JButton("Transferir");
+        JButton transferir = new JButton("Reservar");
         transferir.setBounds(520, 450, 150, 30);
         transferir.setBackground(Color.orange);
         transferir.setFont(new Font("Serif", Font.BOLD, 18));
@@ -150,32 +139,71 @@ public class ListaProdutos extends JFrame {
             }
         });
 
-        // Ação do botão acompanhamento
         acompanhar.addActionListener(e -> {
-            JFrame telaAcomp = new JFrame("Acompanhamento de Transferências");
-            telaAcomp.setBounds(650, 150, 500, 400);
-            telaAcomp.getContentPane().setBackground(Color.BLACK);
+            JFrame telaAcomp = new JFrame("Acompanhamento de Reservas");
+            telaAcomp.setBounds(650, 150, 800, 600);
             telaAcomp.setLayout(null);
+            telaAcomp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            telaAcomp.getContentPane().setBackground(Color.BLACK);
+            telaAcomp.setResizable(false);
 
-            JLabel t = new JLabel("Itens Transferidos:");
-            t.setBounds(20, 20, 400, 30);
-            t.setFont(new Font("Serif", Font.BOLD, 20));
+            JPanel panelAcomp = new JPanel();
+            panelAcomp.setBackground(Color.orange);
+            panelAcomp.setBounds(0, 0, 250, 600);
+            panelAcomp.setLayout(null);
+
+            JLabel menuA = new JLabel("Menu");
+            menuA.setBounds(90, 50, 300, 40);
+            menuA.setFont(new Font("Serif", Font.BOLD, 25));
+            menuA.setForeground(Color.white);
+            panelAcomp.add(menuA);
+
+            JButton voltar = new JButton("Voltar");
+            voltar.setBounds(50, 340, 150, 30);
+            voltar.setBackground(Color.white);
+            voltar.setFont(new Font("Serif", Font.BOLD, 20));
+            voltar.setForeground(Color.black);
+            voltar.addActionListener(ev -> telaAcomp.dispose());
+            panelAcomp.add(voltar);
+
+            telaAcomp.add(panelAcomp);
+
+            JLabel t = new JLabel("Itens Reservados:");
+            t.setBounds(270, 30, 400, 30);
+            t.setFont(new Font("Serif", Font.BOLD, 22));
             t.setForeground(Color.white);
+            telaAcomp.add(t);
 
             JList<String> listAcomp = new JList<>(listaTransferidos);
             listAcomp.setFont(new Font("Monospaced", Font.PLAIN, 14));
             listAcomp.setBackground(Color.DARK_GRAY);
             listAcomp.setForeground(Color.white);
+            listAcomp.setSelectionBackground(Color.GRAY);
+            listAcomp.setSelectionForeground(Color.YELLOW);
 
             JScrollPane spAcomp = new JScrollPane(listAcomp);
-            spAcomp.setBounds(20, 60, 440, 250);
-
-            telaAcomp.add(t);
+            spAcomp.setBounds(270, 80, 480, 320);
             telaAcomp.add(spAcomp);
+
+            JButton coletado = new JButton("Marcar como Coletado");
+            coletado.setBounds(270, 420, 250, 30);
+            coletado.setBackground(Color.orange);
+            coletado.setFont(new Font("Serif", Font.BOLD, 18));
+            coletado.setForeground(Color.white);
+            coletado.addActionListener(ev -> {
+                int idx = listAcomp.getSelectedIndex();
+                if (idx != -1) {
+                    listaTransferidos.remove(idx);
+                    JOptionPane.showMessageDialog(telaAcomp, "Item marcado como coletado!");
+                } else {
+                    JOptionPane.showMessageDialog(telaAcomp, "Selecione um item.");
+                }
+            });
+            telaAcomp.add(coletado);
+
             telaAcomp.setVisible(true);
         });
 
-        // Adiciona todos os componentes à janela
         window.add(Estoque);
         window.add(panel);
         window.add(titulo);
